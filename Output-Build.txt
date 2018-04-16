@@ -1,0 +1,13 @@
+﻿1>------ Build started: Project: BattleTank, Configuration: Development_Editor x64 ------
+1>Using 'git status' to determine working set for adaptive non-unity build.
+1>Creating makefile for hot reloading BattleTankEditor (modules to compile have changed)
+1>Compiling game modules for hot reload
+1>Performing 3 actions (12 in parallel)
+1>TankPlayerController.cpp
+1>[2/3] Link UE4Editor-BattleTank-7333.dll
+1>[3/3] Link UE4Editor-BattleTank-7333.lib
+1>   Creating library C:\Users\dekko\Documents\Unreal Projects\04_BattleTank\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-BattleTank-7333.lib and object C:\Users\dekko\Documents\Unreal Projects\04_BattleTank\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-BattleTank-7333.exp
+1>   Creating library C:\Users\dekko\Documents\Unreal Projects\04_BattleTank\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-BattleTank-7333.suppressed.lib and object C:\Users\dekko\Documents\Unreal Projects\04_BattleTank\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-BattleTank-7333.suppressed.exp
+1>Deploying BattleTankEditor Win64 Development...
+1>Total build time: 10.11 seconds (Local executor: 1.32 seconds)
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
