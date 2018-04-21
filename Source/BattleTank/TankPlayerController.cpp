@@ -69,11 +69,17 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 	auto EndLocation = StartLocation + (LookDirection * LineTraceRange);
 
 	FHitResult HitResult;
+
+	// Ignore our own tanks barrel if the aim crosses over it:
+	FCollisionQueryParams CollisionParams;
+	CollisionParams.AddIgnoredActor(GetControlledTank());
+
 	if (GetWorld()->LineTraceSingleByChannel(
 		HitResult,
 		StartLocation,
 		EndLocation,
-		ECollisionChannel::ECC_Visibility
+		ECollisionChannel::ECC_Visibility,
+		CollisionParams
 	))
 	{
 		HitLocation = HitResult.Location;
