@@ -2,10 +2,15 @@
 
 #include "TankPlayerController.h"
 #include "Engine/World.h"
-#include "Tank.h"
+#include "TankAimingComponent.h"
 
 void ATankPlayerController::BeginPlay() {
 	Super::BeginPlay();
+
+	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+	if (!AimingComponent) { return; }
+
+	FoundAimingComponent(AimingComponent);
 }
 
 void ATankPlayerController::Tick(float DeltaTime) {
@@ -13,16 +18,13 @@ void ATankPlayerController::Tick(float DeltaTime) {
 	AimTowardsCrosshair();
 }
 
-ATank* ATankPlayerController::GetControlledTank() const {
-	return Cast<ATank>(GetPawn());
-}
-
 void ATankPlayerController::AimTowardsCrosshair() {
-	if (!GetControlledTank()) { return; }
+	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+	if (!AimingComponent) { return; }
 
 	FVector HitLocation; // OUT Parameter
 	if (GetSightRayHitLocation(HitLocation)) {
-		GetControlledTank()->AimAt(HitLocation);
+		AimingComponent->AimAt(HitLocation);
 	}
 }
 
@@ -61,7 +63,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 
 	// Ignore our own tanks barrel if the aim crosses over it:
 	FCollisionQueryParams CollisionParams;
-	CollisionParams.AddIgnoredActor(GetControlledTank());
+	CollisionParams.AddIgnoredActor(GetPawn());
 
 	if (GetWorld()->LineTraceSingleByChannel(
 		HitResult,
