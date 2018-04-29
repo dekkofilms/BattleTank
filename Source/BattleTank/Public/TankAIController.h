@@ -18,5 +18,11 @@ public:
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Movement")
 	float AcceptanceRadius = 8000;
+
+private:
+	void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnTankDeath();
 	
 };

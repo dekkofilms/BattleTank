@@ -38,4 +38,9 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	int LineTraceRange = 1000000;
+
+	void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnTankDeath();
 };
