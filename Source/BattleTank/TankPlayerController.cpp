@@ -27,7 +27,7 @@ void ATankPlayerController::SetPawn(APawn* InPawn) {
 }
 
 void ATankPlayerController::OnTankDeath() {
-	UE_LOG(LogTemp, Warning, TEXT("Player Controller tank dead"));
+	StartSpectatingOnly();
 }
 
 void ATankPlayerController::Tick(float DeltaTime) {
@@ -86,7 +86,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 		HitResult,
 		StartLocation,
 		EndLocation,
-		ECollisionChannel::ECC_Visibility,
+		ECollisionChannel::ECC_Camera,
 		CollisionParams
 	))
 	{

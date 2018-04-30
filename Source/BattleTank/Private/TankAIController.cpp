@@ -23,7 +23,9 @@ void ATankAIController::SetPawn(APawn* InPawn) {
 }
 
 void ATankAIController::OnTankDeath() {
-	UE_LOG(LogTemp, Warning, TEXT("AI Tank is dead"));
+	if (!GetPawn()) { return; }
+
+	GetPawn()->DetachFromControllerPendingDestroy();
 }
 
 void ATankAIController::Tick(float DeltaTime) {
